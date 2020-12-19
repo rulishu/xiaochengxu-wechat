@@ -1,0 +1,27 @@
+<!--index.wxml-->
+<view class="container">
+
+  <!-- 用户 openid -->
+	<scroll-view class="chatroom" scroll-y="true">
+		<view class="item" wx:for="{{messages}}" wx:key="_id">
+			<image src="{{item.avatarUrl}}" class="avatar"></image>
+			<view class="content">
+				<text>{{item.message}}</text>
+			</view>
+		</view>
+
+	</scroll-view>
+
+  <view class="footer">
+		<view wx:if="{{isLoggin}}">
+			<open-data class="avatar" type="userAvatarUrl"></open-data>
+			<input value="{{inputValue}}" bind:input="onInput"></input>
+			<text class="send" bindtap="handleSend">发送</text>
+		</view>
+    <view wx:if="{{!isLoggin}}">
+      <button  open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">授权登录</button>
+		</view>
+	</view>
+
+
+</view>
